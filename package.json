@@ -1,0 +1,18 @@
+{
+  "name": "video-translator-extension",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "跨浏览器视频实时翻译扩展（Edge / Yandex / Chrome / Safari）",
+  "scripts": {
+    "vendor": "node tools/bundle-vendor.mjs",
+    "icons": "node tools/gen-icons.mjs",
+    "check": "node tools/check.mjs",
+    "test": "node --test test/regression.test.mjs",
+    "test:asr": "node tools/asr-smoke.mjs",
+    "safari": "bash scripts/convert-to-safari.sh"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.3.0"
+  }
+}

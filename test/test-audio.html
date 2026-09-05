@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>音频识别测试页</title>
+<style>
+  body { font-family: -apple-system, 'PingFang SC', sans-serif; background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; align-items: center; padding: 40px 16px; margin: 0; }
+  video { width: min(720px, 100%); border-radius: 12px; background: #000; }
+  button { margin-top: 16px; padding: 10px 24px; border-radius: 999px; border: 0; background: #2563eb; color: #fff; font-size: 15px; cursor: pointer; font-family: inherit; }
+</style>
+</head>
+<body>
+<h1 style="font-size:19px">🔊 音频识别测试（Whisper 本地识别）</h1>
+<video id="v" controls playsinline src="test-audio.mp4"></video>
+<button id="play">▶ 开始播放（有声）</button>
+<script>
+  document.getElementById('play').onclick = () => document.getElementById('v').play();
+  // 循环播放，方便长时间测试
+  document.getElementById('v').addEventListener('ended', () => document.getElementById('v').play());
+</script>
+</body>
+</html>

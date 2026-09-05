@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <div class="logo">🌐 视频实时翻译</div>
+  <div class="sub">多语言视频 → 中文 · 优先读取原字幕</div>
+</header>
+
+<section class="card">
+  <div class="row">
+    <span class="label">页面视频</span>
+    <span id="videoInfo" class="value">检测中…</span>
+  </div>
+  <div class="row">
+    <label class="label" for="videoSource">翻译目标</label>
+    <select id="videoSource">
+      <option value="auto">自动锁定主视频</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="label" for="isolateAudio">声音隔离</label>
+    <label class="value"><input type="checkbox" id="isolateAudio" checked> 临时静音其他播放器</label>
+  </div>
+  <div class="row">
+    <label class="label" for="mode">识别方式</label>
+    <select id="mode">
+      <option value="auto">自动（推荐）</option>
+      <option value="audio">音频识别（Whisper 本地识别）</option>
+      <option value="captions">字幕识别（视频自带字幕）</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="label" for="model">语音模型</label>
+    <select id="model">
+      <option value="tiny">tiny · 快（约 40MB）</option>
+      <option value="base">base · 均衡（推荐）</option>
+      <option value="small">small · 更准，但更慢</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="label" for="sourceLang">原语言</label>
+    <select id="sourceLang">
+      <option value="auto">自动识别（多语言）</option>
+      <option value="ja">日语</option>
+      <option value="en">英语</option>
+      <option value="ko">韩语</option>
+      <option value="ru">俄语</option>
+      <option value="es">西班牙语</option>
+      <option value="fr">法语</option>
+      <option value="de">德语</option>
+      <option value="pt">葡萄牙语</option>
+      <option value="it">意大利语</option>
+      <option value="ar">阿拉伯语</option>
+      <option value="hi">印地语</option>
+      <option value="th">泰语</option>
+      <option value="vi">越南语</option>
+      <option value="id">印尼语</option>
+      <option value="tr">土耳其语</option>
+      <option value="zh">中文</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="label" for="targetLang">目标语言</label>
+    <select id="targetLang">
+      <option value="zh-CN">中文（简体）</option>
+      <option value="zh-TW">中文（繁体）</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="label" for="fontSize">字幕字号</label>
+    <select id="fontSize">
+      <option value="18">小</option>
+      <option value="22">中</option>
+      <option value="28">大</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="label" for="layout">双语布局</label>
+    <select id="layout">
+      <option value="trans-top">翻译上 · 原文下</option>
+      <option value="orig-top">原文上 · 翻译下</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="label" for="provider">翻译接口</label>
+    <select id="provider">
+      <option value="auto">自动（免费接口）</option>
+      <option value="deepseek">DeepSeek（准确率更高·需 Key）</option>
+    </select>
+  </div>
+  <div class="row" id="keyRow" style="display:none;">
+    <label class="label" for="apiKey">DeepSeek Key</label>
+    <input type="password" id="apiKey" placeholder="sk-..." style="background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:7px;padding:4px 6px;font-size:12px;width:180px;">
+  </div>
+  <div class="row" id="deepseekModelRow" style="display:none;">
+    <label class="label" for="deepseekModel">翻译模型</label>
+    <select id="deepseekModel">
+      <option value="deepseek-v4-flash">V4 Flash（低延迟）</option>
+      <option value="deepseek-v4-pro">V4 Pro</option>
+    </select>
+  </div>
+</section>
+
+<div id="status" class="status">就绪</div>
+
+<div class="actions">
+  <button id="startBtn" class="btn primary">开始翻译</button>
+  <button id="stopBtn" class="btn">停止</button>
+</div>
+
+<footer>
+  日语或英语识别不稳时，请指定原语言。音频识别需 Chromium 116+，首次下载模型后开始识别。流式字幕会持续修正；实际延迟取决于设备和网络，不能保证 1 秒内完成。Safari 使用视频自带字幕。
+</footer>
+<script src="popup.js"></script>
+</body>
+</html>

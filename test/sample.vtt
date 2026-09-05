@@ -1,0 +1,19 @@
+WEBVTT
+
+00:00:00.500 --> 00:00:06.000
+This is a demo subtitle for the video translator extension.
+
+00:00:06.500 --> 00:00:14.000
+If you can read this line in Chinese below the video, caption translation is working.
+
+00:00:14.500 --> 00:00:23.000
+The extension detects the playing video and translates subtitles into Chinese automatically.
+
+00:00:23.500 --> 00:00:32.000
+For videos without subtitles, use the audio recognition mode on Edge, Yandex or Chrome.
+
+00:00:32.500 --> 00:00:41.000
+The speech is recognized locally with the Whisper model, and only the text is sent for translation.
+
+00:00:41.500 --> 00:00:50.000
+Enjoy watching videos in any language, translated into Chinese in real time.

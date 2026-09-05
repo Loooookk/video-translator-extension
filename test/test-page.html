@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>视频实时翻译 · 测试页</title>
+<style>
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; align-items: center; padding: 40px 16px; margin: 0; }
+  video { width: min(960px, 100%); border-radius: 12px; background: #000; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .tip { color: #94a3b8; font-size: 13.5px; max-width: 760px; line-height: 1.9; margin-top: 14px; }
+  .tip b { color: #7dd3fc; }
+  #play { margin-top: 18px; padding: 11px 28px; border-radius: 999px; border: 0; background: #2563eb; color: #fff; font-size: 15px; cursor: pointer; font-family: inherit; }
+  #play:hover { background: #1d4ed8; }
+</style>
+</head>
+<body>
+<h1>🎬 视频实时翻译 · 测试页</h1>
+<video id="v" controls playsinline></video>
+<div class="tip">
+  <b>音频识别测试</b>：点下方「▶ 开始播放（有声）」，等视频开始说话，再点浏览器工具栏里的扩展图标 → 「开始翻译」。
+  首次使用会联网下载约 40MB 的语音模型（之后离线可用），字幕会显示在视频下方。<br>
+  <b>字幕识别测试</b>：本页视频挂了示例英文字幕，在扩展弹窗里把识别方式选为「字幕识别」再点「开始翻译」，无需下载模型即可看到中文字幕。
+</div>
+<button id="play">▶ 开始播放（有声）</button>
+<script>
+  const v = document.getElementById('v');
+  // 本地 40 秒测试视频（加载快）；测试语音识别可换成带人声的视频，例如开源短片 Sintel：
+  // v.src = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4';
+  v.src = 'test-video.mp4';
+  const track = document.createElement('track');
+  track.kind = 'subtitles';
+  track.label = '示例字幕';
+  track.srclang = 'en';
+  track.src = 'sample.vtt';
+  track.default = true;
+  v.appendChild(track);
+  document.getElementById('play').onclick = () => v.play();
+</script>
+</body>
+</html>

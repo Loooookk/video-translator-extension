@@ -1,0 +1,25 @@
+node_modules/
+safari-project/
+.safari-stage/
+.DS_Store
+
+# Local credentials and signing keys
+.env
+.env.*
+!.env.example
+.npmrc
+auth.json
+credentials*.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Generated packages, caches, and local reports
+*.crx
+*.zip
+*.log
+.cache/
+coverage/
+test-results/
+playwright-report/
